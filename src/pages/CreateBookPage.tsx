@@ -6,7 +6,7 @@ import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea"
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card"
-import {Upload, Save, Loader2} from "lucide-react"
+import {Loader2, Save, Upload} from "lucide-react"
 import NavBar from "@/components/NavBar.tsx";
 import Footer from "@/components/Footer.tsx"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
@@ -59,7 +59,6 @@ export default function CreateBookPage() {
         (async () => {
             await fetchDictionaries()
         })();
-
     }, []);
 
     const {genres, languages} = dictionaries;
@@ -137,7 +136,7 @@ export default function CreateBookPage() {
                                                     type="file"
                                                     accept="image/*"
                                                     onChange={handleImageChange}
-                                                    style={{ display: 'none' }}
+                                                    style={{display: 'none'}}
                                                     id="image-upload"
                                                 />
                                                 <label htmlFor="image-upload">
@@ -198,7 +197,8 @@ export default function CreateBookPage() {
                                         {/* Title and Author */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <Label htmlFor="title" className="text-base font-semibold mb-2 block text-gray-600">
+                                                <Label htmlFor="title"
+                                                       className="text-base font-semibold mb-2 block text-gray-600">
                                                     Book Title
                                                 </Label>
                                                 <Input
@@ -214,7 +214,8 @@ export default function CreateBookPage() {
                                             </div>
 
                                             <div>
-                                                <Label htmlFor="author" className="text-base font-semibold mb-2 block text-gray-600">
+                                                <Label htmlFor="author"
+                                                       className="text-base font-semibold mb-2 block text-gray-600">
                                                     Author
                                                 </Label>
                                                 <Input
@@ -232,7 +233,8 @@ export default function CreateBookPage() {
 
                                         {/* Description */}
                                         <div>
-                                            <Label htmlFor="description" className="text-base font-semibold mb-2 block text-gray-600">
+                                            <Label htmlFor="description"
+                                                   className="text-base font-semibold mb-2 block text-gray-600">
                                                 Description
                                             </Label>
                                             <Textarea

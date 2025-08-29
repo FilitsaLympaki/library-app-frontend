@@ -1,5 +1,6 @@
 import {useCallback, useState} from "react";
 import {BookSearchResultDto, GetBookDto} from "@/services/api.ts";
+
 //import {useAutocompleteState} from "./useAutocompleteState";
 
 export interface Genre {
@@ -74,17 +75,16 @@ export const useBookState = () => {
     const handleDictionariesChange = useCallback((field: 'genre' | 'language', value: string) => {
         if (field === 'genre') {
             setSelectedGenre(value);
-            setEditData(prev => prev ? { ...prev, genreId: Number(value) } : prev);
+            setEditData(prev => prev ? {...prev, genreId: Number(value)} : prev);
         } else if (field === 'language') {
             setSelectedLanguage(value);
-            setEditData(prev => prev ? { ...prev, languageId: Number(value) } : prev);
+            setEditData(prev => prev ? {...prev, languageId: Number(value)} : prev);
         }
     }, []);
 
 
-
     return {
-         dictionaries,
+        dictionaries,
         title,
         author,
         publisher,
@@ -111,7 +111,7 @@ export const useBookState = () => {
         image,
         editData,
 
-         setDictionaries,
+        setDictionaries,
         setSelectedGenre,
         setAuthor,
         setPublisher,

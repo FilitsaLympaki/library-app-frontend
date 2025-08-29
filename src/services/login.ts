@@ -23,7 +23,7 @@ export const removeToken = () => {
 
 export const isAuthenticated = (): boolean => {
     const token = getToken();
-    if (!token)  console.log("User is not authenticated");
+    if (!token) console.log("User is not authenticated");
     return token !== null;
 }
 

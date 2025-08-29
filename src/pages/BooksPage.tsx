@@ -170,7 +170,7 @@ const BooksPage = () => {
             selectedLanguage, publisher,
             publicationYear, currentPage,
             itemsPerPage, sortBy, sortDirection,
-            ])
+        ])
 
     return (
         <>

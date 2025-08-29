@@ -31,6 +31,7 @@ export interface BookSearchResultDto {
     author: BookSearchResultAuthorDto,
 }
 
+
 export interface UpdateBookDto extends BookValues {
     id: number;
 }

@@ -44,23 +44,19 @@ export default function EditBookPage() {
 
     //  fetch dictionaries
     useEffect(() => {
-            const fetchDictionaries = async () => {
-                try {
-                    const data = await getDictionaries();
-                    setDictionaries({genres: data.genres, languages: data.languages});
-                } catch (e) {
-                    console.error("Error in fetching dictionaries", e);
-                    setError("Failed to load dictionaries")
-                }
+        const fetchDictionaries = async () => {
+            try {
+                const data = await getDictionaries();
+                setDictionaries({genres: data.genres, languages: data.languages});
+            } catch (e) {
+                console.error("Error in fetching dictionaries", e);
+                setError("Failed to load dictionaries")
             }
-            (async () => {
-                await fetchDictionaries()
-            })();
         }
-        ,
-        []
-    )
-    ;
+        (async () => {
+            await fetchDictionaries()
+        })();
+    }, []);
 
     const {genres, languages} = dictionaries;
 
@@ -124,7 +120,7 @@ export default function EditBookPage() {
             try {
                 setImagePreviewUrl(null);
                 setImageBase64('');
-                setEditData(prev => prev ? { ...prev, image: '' } : prev);
+                setEditData(prev => prev ? {...prev, image: ''} : prev);
 
                 // If we're currently editing, update the book immediately
                 if (isEditing && bookData && editData) {
@@ -135,7 +131,7 @@ export default function EditBookPage() {
                     };
 
                     await updateBook(Number(id), updateDto);
-                    setBookData(prev => prev ? { ...prev, imageFileName: null } : prev);
+                    setBookData(prev => prev ? {...prev, imageFileName: null} : prev);
                     alert("Image deleted successfully!");
                 }
             } catch (error) {
@@ -176,7 +172,7 @@ export default function EditBookPage() {
     const handleSave = async () => {
         setLoading(true)
         if (!validateBookData(editData)) {
-           // alert("Please fix the validation errors shown below.")
+            // alert("Please fix the validation errors shown below.")
             return
         }
 
@@ -186,7 +182,7 @@ export default function EditBookPage() {
         }
 
         const updateDto: UpdateBookDto = {
-           ...editData,
+            ...editData,
             id: Number(id),
             image: imageBase64 || undefined
         };
@@ -280,7 +276,9 @@ export default function EditBookPage() {
                                         <CardContent className="p-6">
                                             <div className="space-y-6">
                                                 {/* Book Image Upload */}
-                                                <div className="aspect-[3/4] bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center hover:border-gray-400 transition-colors cursor-pointer">
+                                                <div className="aspect-[3/4] bg-gray-100 rounded-lg border-2 border-dashed
+                                                    border-gray-300 flex flex-col items-center justify-center hover:border-gray-400
+                                                     transition-colors cursor-pointer">
                                                     {isEditing ? (
                                                         <div
                                                             className="w-full h-full flex flex-col items-center justify-center"
@@ -355,7 +353,7 @@ export default function EditBookPage() {
                                                             <Button onClick={handleSave} className="w-full"
                                                                     size="lg">
                                                                 <Save className="w-4 h-4 mr-2"/>
-                                                                {loading ?  "Save Changes": "Save Changes"}
+                                                                {loading ? "Save Changes" : "Save Changes"}
                                                             </Button>
                                                             <Button onClick={handleCancel} variant="outline"
                                                                     className="w-full bg-transparent" size="lg">

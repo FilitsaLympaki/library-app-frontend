@@ -20,13 +20,13 @@ export const booksValidationSchema = z.object({
             "Please enter a valid ISBN format (e.g., 978-0-452-28423-4)"),
 
     publicationYear: z.number({
-    required_error: "Publication year is required",
-    invalid_type_error: "Publication year must be a number"
-})
-    .int("Publication year must be a whole number")
-    .min(1000, "Publication year must be a 4-digit number")
-    .max(new Date().getFullYear() + 1, "Publication year cannot be in the future")
-    .optional(),
+        required_error: "Publication year is required",
+        invalid_type_error: "Publication year must be a number"
+    })
+        .int("Publication year must be a whole number")
+        .min(1000, "Publication year must be a 4-digit number")
+        .max(new Date().getFullYear() + 1, "Publication year cannot be in the future")
+        .optional(),
 
 
     pages: z.number({

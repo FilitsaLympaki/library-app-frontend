@@ -1,4 +1,4 @@
-import {LibraryBig, Eye, EyeOff} from "lucide-react";
+import {Eye, EyeOff, LibraryBig} from "lucide-react";
 import {useNavigate} from "react-router";
 import React, {useState} from "react";
 import {login, storeToken} from "@/services/login.ts";
@@ -90,7 +90,7 @@ const LoginPage = () => {
                 <div className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8">
                     <div className="flex items-center space-x-2">
                         <div className="w-6 h-6 sm:w-8 sm:h-8 bg-slate-100 rounded-lg flex items-center justify-center">
-                            <LibraryBig className="h-4 w-4 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-slate-600" />
+                            <LibraryBig className="h-4 w-4 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-slate-600"/>
                         </div>
                         <span className="text-slate-600 font-semibold text-lg sm:text-xl lg:text-2xl">Library</span>
                     </div>
@@ -121,7 +121,8 @@ const LoginPage = () => {
                                     errors?.username ? "border-red-300" : "border-gray-300"
                                 }`}
                             />
-                            {errors?.username && <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.username}</p>}
+                            {errors?.username &&
+                                <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.username}</p>}
                         </div>
 
                         <div>
@@ -150,7 +151,8 @@ const LoginPage = () => {
                                     {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
                                 </button>
                             </div>
-                            {errors?.password && <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.password}</p>}
+                            {errors?.password &&
+                                <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.password}</p>}
                         </div>
 
                         <div className="flex justify-end">

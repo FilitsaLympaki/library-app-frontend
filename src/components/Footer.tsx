@@ -1,9 +1,9 @@
 "use client"
 
-import { Separator } from "@/components/ui/separator"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, BookOpen } from "lucide-react"
+import {Separator} from "@/components/ui/separator"
+import {Button} from "@/components/ui/button"
+import {Input} from "@/components/ui/input"
+import {BookOpen, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter} from "lucide-react"
 
 export default function Footer() {
     return (
@@ -19,21 +19,26 @@ export default function Footer() {
                             <span className="text-xl font-bold">Library</span>
                         </div>
                         <p className="text-slate-300 text-sm leading-relaxed">
-                            Your digital gateway to knowledge. Discover, read, and manage your favorite books with our comprehensive
+                            Your digital gateway to knowledge. Discover, read, and manage your favorite books with our
+                            comprehensive
                             library management system.
                         </p>
                         <div className="flex space-x-4">
-                            <Button size="sm" variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-700">
-                                <Facebook className="h-4 w-4" />
+                            <Button size="sm" variant="ghost"
+                                    className="text-slate-300 hover:text-white hover:bg-slate-700">
+                                <Facebook className="h-4 w-4"/>
                             </Button>
-                            <Button size="sm" variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-700">
-                                <Twitter className="h-4 w-4" />
+                            <Button size="sm" variant="ghost"
+                                    className="text-slate-300 hover:text-white hover:bg-slate-700">
+                                <Twitter className="h-4 w-4"/>
                             </Button>
-                            <Button size="sm" variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-700">
-                                <Instagram className="h-4 w-4" />
+                            <Button size="sm" variant="ghost"
+                                    className="text-slate-300 hover:text-white hover:bg-slate-700">
+                                <Instagram className="h-4 w-4"/>
                             </Button>
-                            <Button size="sm" variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-700">
-                                <Linkedin className="h-4 w-4" />
+                            <Button size="sm" variant="ghost"
+                                    className="text-slate-300 hover:text-white hover:bg-slate-700">
+                                <Linkedin className="h-4 w-4"/>
                             </Button>
                         </div>
                     </div>
@@ -87,15 +92,15 @@ export default function Footer() {
                         <h3 className="text-lg font-semibold">Stay Connected</h3>
                         <div className="space-y-3">
                             <div className="flex items-center space-x-2 text-sm text-slate-300">
-                                <Mail className="h-4 w-4" />
+                                <Mail className="h-4 w-4"/>
                                 <span>info@library.com</span>
                             </div>
                             <div className="flex items-center space-x-2 text-sm text-slate-300">
-                                <Phone className="h-4 w-4" />
+                                <Phone className="h-4 w-4"/>
                                 <span>+1 (555) 123-4567</span>
                             </div>
                             <div className="flex items-center space-x-2 text-sm text-slate-300">
-                                <MapPin className="h-4 w-4" />
+                                <MapPin className="h-4 w-4"/>
                                 <span>123 Library St, Book City</span>
                             </div>
                         </div>
@@ -115,7 +120,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <Separator className="my-8 bg-slate-700" />
+                <Separator className="my-8 bg-slate-700"/>
 
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p className="text-slate-400 text-sm">© 2024 Library. All rights reserved.</p>

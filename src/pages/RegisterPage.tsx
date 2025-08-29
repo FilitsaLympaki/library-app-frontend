@@ -2,7 +2,7 @@
 import {z} from "zod";
 import React, {useState} from "react";
 import {useNavigate} from "react-router";
-import {LibraryBig, Eye, EyeOff} from "lucide-react";
+import {Eye, EyeOff, LibraryBig} from "lucide-react";
 import {register} from "@/services/register.ts";
 import {useInputChange} from "@/services/hooks/useInputChange.ts";
 
@@ -114,7 +114,8 @@ const RegisterPage = () => {
                         flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8">
                 <div className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8">
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                        <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-8 md:h-8 bg-slate-100 rounded-lg flex items-center justify-center">
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-8 md:h-8 bg-slate-100
+                                rounded-lg flex items-center justify-center">
                             <LibraryBig className="h-4 w-4 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-slate-600"/>
                         </div>
                         <span className="text-slate-600 font-semibold text-sm sm:text-lg md:text-2xl">Library</span>
@@ -124,7 +125,8 @@ const RegisterPage = () => {
                 <div className="bg-white rounded-2xl shadow-xl sm:shadow-2xl p-4 sm:p-6
                         md:p-8 w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
                     <div className="ext-center mb-6 sm:mb-8">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Create Account</h1>
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Create
+                            Account</h1>
                         <p className="text-sm sm:text-base text-gray-600">Join us today</p>
                     </div>
 
@@ -136,7 +138,8 @@ const RegisterPage = () => {
 
                     <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
                         <div>
-                            <label htmlFor="username" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                            <label htmlFor="username"
+                                   className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                                 Username
                             </label>
                             <input
@@ -156,7 +159,8 @@ const RegisterPage = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                            <label htmlFor="email"
+                                   className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                                 Email
                             </label>
                             <input
@@ -176,7 +180,8 @@ const RegisterPage = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                            <label htmlFor="password"
+                                   className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                                 Password
                             </label>
                             <div className="relative">
@@ -199,13 +204,14 @@ const RegisterPage = () => {
                                     className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                                 >
                                     {showPassword ? (
-                                        <EyeOff size={16} className="sm:w-5 sm:h-5" />
+                                        <EyeOff size={16} className="sm:w-5 sm:h-5"/>
                                     ) : (
-                                        <Eye size={16} className="sm:w-5 sm:h-5" />
+                                        <Eye size={16} className="sm:w-5 sm:h-5"/>
                                     )}
                                 </button>
                             </div>
-                            {errors?.password && <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.password}</p>}
+                            {errors?.password &&
+                                <p className="text-red-800 text-xs sm:text-sm mt-1">{errors.password}</p>}
                         </div>
 
                         <div>
@@ -235,9 +241,9 @@ const RegisterPage = () => {
                                     className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
                                 >
                                     {showConfirmPassword ? (
-                                        <EyeOff size={16} className="sm:w-5 sm:h-5" />
+                                        <EyeOff size={16} className="sm:w-5 sm:h-5"/>
                                     ) : (
-                                        <Eye size={16} className="sm:w-5 sm:h-5" />
+                                        <Eye size={16} className="sm:w-5 sm:h-5"/>
                                     )}
                                 </button>
                             </div>

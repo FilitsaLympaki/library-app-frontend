@@ -1,6 +1,6 @@
 // hooks/useValidation.ts
 import React from 'react';
-import { z } from 'zod';
+import {z} from 'zod';
 
 export const useValidation = <TData, TErrors>(
     schema: z.ZodSchema<TData>,
