@@ -135,6 +135,25 @@ const BooksPage = () => {
         }
     }, [itemsPerPage, sortBy, sortDirection]);
 
+    const hasActiveFilters = () => {
+        return title.trim() !== '' ||
+            author.trim() !== '' ||
+            publisher.trim() !== '' ||
+            publicationYear !== null ||
+            (selectedGenre && selectedGenre !== '') ||
+            (selectedLanguage && selectedLanguage !== '');
+    };
+
+    const clearFilters = () => {
+        setTitle('');
+        setAuthor('');
+        setPublisher('');
+        setPublicationYear(null);
+        handleDictionariesChange("genre", '');
+        handleDictionariesChange("language", '');
+        setCurrentPage(0);
+    };
+
     //  fetch books
     const fetchBooks = useCallback(
         async (pageNumber: number) => {
@@ -143,8 +162,8 @@ const BooksPage = () => {
             const filters: BookFiltersDto = {
                 title: title || undefined,
                 author: author || undefined,
-                genreId: selectedGenre ? Number(selectedGenre) : undefined,
-                languageId: selectedLanguage ? Number(selectedLanguage) : undefined,
+                genreId: selectedGenre && selectedGenre !== "" ? Number(selectedGenre) : undefined,
+                languageId: selectedLanguage && selectedLanguage !== "" ? Number(selectedLanguage) : undefined,
                 publisher: publisher || undefined,
                 publicationYear: publicationYear || undefined,
                 page: pageNumber == undefined ? currentPage : pageNumber,
@@ -365,6 +384,16 @@ const BooksPage = () => {
                                         </div>
                                     </div>
 
+                                    {hasActiveFilters() && (
+                                        <Button
+                                            onClick={clearFilters}
+                                            variant="outline"
+                                            size="lg"
+                                        >
+                                            Clear Filters
+                                        </Button>
+                                    )}
+
                                     {/*search button*/}
                                     <div
                                         className=" pt-4 border-t flex justify-end mr-20">
@@ -374,7 +403,8 @@ const BooksPage = () => {
                                         )}
                                         <Button
                                             onClick={() => fetchBooks(currentPage)}
-                                            className="flex items-center bg-slate-900  gap-2" size="lg"
+                                            className="flex items-center bg-slate-900  gap-2 hover: cursor-pointer"
+                                            size="lg"
                                         >
                                             <Search className="w-4 h-4"/>
                                             View Results
@@ -473,10 +503,10 @@ const BooksPage = () => {
                                                          onClick={() => navigate(`/books/${book.id}`)}
                                                          className="bg-slate-50 rounded-lg p-6 border border-slate-200
                                                                     cursor-pointer hover:shadow-lg transition">
-                                                        <img src={book.imageFileName ||
-                                                            'https://via.placeholder.com/200x300/gray/white?text=No+Image'}
-                                                             alt={book.title}
-                                                             className="w-full h-32 object-cover rounded mb-4"/>
+                                                        <img
+                                                            src={book.imageFileName || '/public/default_book_cover.png'}
+                                                            alt={book.title}
+                                                            className="w-full h-45 object-cover rounded mb-4"/>
                                                         <h3 className="font-semibold text-slate-800 mb-2">{book.title}</h3>
                                                         <h3 className="font-semibold text-slate-800 mb-2">{book.author.name}</h3>
                                                     </div>
