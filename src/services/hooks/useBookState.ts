@@ -82,7 +82,6 @@ export const useBookState = () => {
         }
     }, []);
 
-
     return {
         dictionaries,
         title,

@@ -21,11 +21,11 @@ const initialBookData: CreateBookDto = {
     authorName: "",
     description: "",
     publisherName: "",
-    publicationYear: undefined,
+    publicationYear: 2025,
     isbn: "",
     image: "",
     languageId: 0,
-    pages: undefined,
+    pages: 0,
     genreId: 0,
     price: undefined,
     rating: undefined,
@@ -64,6 +64,7 @@ export default function CreateBookPage() {
     const {genres, languages} = dictionaries;
     const handleInputChange = useFieldChange(setValues, validationErrors, setValidationErrors);
 
+
     const handleSave = async () => {
         // Basic validation
         if (!validateBookData(values)) {
@@ -73,6 +74,7 @@ export default function CreateBookPage() {
         setLoading(true)
 
         try {
+
             const response = await createBook(values as CreateBookDto)
             setError(null)
 
@@ -276,9 +278,8 @@ export default function CreateBookPage() {
                                                 </Label>
                                                 <Input
                                                     id="year"
-                                                    value={values.publicationYear?.toString()}
+                                                    value={values.publicationYear}
                                                     onChange={(e) => handleInputChange("publicationYear", Number(e.target.value))}
-                                                    placeholder="e.g., 2024"
                                                     type="number"
                                                 />
                                                 {validationErrors.publicationYear && (
@@ -337,7 +338,7 @@ export default function CreateBookPage() {
                                                 </Label>
                                                 <Input
                                                     id="pages"
-                                                    value={values.pages?.toString()}
+                                                    value={values.pages}
                                                     onChange={(e) => handleInputChange("pages", Number(e.target.value))}
                                                     placeholder="e.g., 250"
                                                     type="number"
@@ -380,7 +381,7 @@ export default function CreateBookPage() {
                                                 </Label>
                                                 <Input
                                                     id="price"
-                                                    value={values.price?.toString()}
+                                                    value={values.price !== undefined ? values.price.toString() : ""}
                                                     onChange={(e) => handleInputChange("price", Number(e.target.value))}
                                                     placeholder="e.g., $19.99"
                                                 />
@@ -397,7 +398,7 @@ export default function CreateBookPage() {
                                                 </Label>
                                                 <Input
                                                     id="rating"
-                                                    value={values.rating?.toString()}
+                                                    value={values.rating !== undefined ? values.rating.toString() : ""}
                                                     onChange={(e) => handleInputChange("rating", Number(e.target.value))}
                                                     placeholder="e.g., 4"
                                                     type="number"
@@ -410,33 +411,9 @@ export default function CreateBookPage() {
                                             </div>
                                         </div>
 
-                                        {/* Form Footer */}
-                                        {/*<div className="pt-6 border-t">*/}
-                                        {/*    <div className="flex items-center justify-between">*/}
-                                        {/*        <p className="text-sm text-gray-500">Fields marked with * are*/}
-                                        {/*            required</p>*/}
-                                        {/*        <Button onClick={handleSave} size="lg"*/}
-                                        {/*                disabled={loading}*/}
-                                        {/*                className="md:hidden">*/}
-                                        {/*            {loading ? (*/}
-                                        {/*                <>*/}
-                                        {/*                    <Loader2 className="w-4 h-4 mr-2 animate-spin"/>*/}
-                                        {/*                    Saving...*/}
-                                        {/*                </>*/}
-                                        {/*            ) : (*/}
-                                        {/*                <>*/}
-                                        {/*                    <Save className="w-4 h-4 mr-2"/>*/}
-                                        {/*                    Save Book*/}
-                                        {/*                </>*/}
-                                        {/*            )}*/}
-                                        {/*        </Button>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
                                     </CardContent>
                                 </Card>
                             </div>
-
-
                         </div>
                     </div>
                 </div>

@@ -59,7 +59,7 @@ function NavBar() {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="w-48">
-                                    <DropdownMenuItem onClick={handleSignOut} className="text-red-600">
+                                    <DropdownMenuItem onClick={handleSignOut} className="text-red-600 cursor-pointer">
                                         Sign Out
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>

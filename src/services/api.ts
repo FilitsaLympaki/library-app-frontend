@@ -44,10 +44,10 @@ export interface GetBookDto {
     genre: string,
     languageName: string,
     publisherName: string,
-    publicationYear: number | undefined,
+    publicationYear: number,
     description: string,
     isbn: string,
-    pages: number | undefined,
+    pages: number,
     price: number | undefined,
     rating: number | undefined,
 }

@@ -77,21 +77,8 @@ export default function EditBookPage() {
         (async () => {
             await fetchBook();
         })();
-    }, [id]); //setBookData, setError, setLoading, ???
+    }, [id]);
 
-
-    // // Input change handler with validation error clearing
-    // const handleInputChange = (field: keyof BookValues, value: string | number) => {
-    //     setEditData(prev => prev ? {...prev, [field]: value} : null);
-    //
-    //     // Clear validation error for this field when user starts typing
-    //     if (validationErrors[field as keyof BookValidationErrors])
-    //         setValidationErrors(prev => ({
-    //             ...prev,
-    //             [field]: undefined
-    //         }))
-    //     }
-    // };
     const handleInputChange = useFieldChange(setEditData, validationErrors, setValidationErrors);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -192,28 +179,6 @@ export default function EditBookPage() {
 
             const refreshedBookData = await getBook(Number(id));
             setBookData(refreshedBookData);
-
-            // const updatedBookData = {
-            //     ...bookData!,
-            //     title: editData.title,
-            //     author: editData.authorName,
-            //     description: editData.description,
-            //     publisherName: editData.publisherName,
-            //     publicationYear: editData?.publicationYear,
-            //     isbn: editData.isbn,
-            //     pages: editData?.pages,
-            //     price: editData?.price,
-            //     rating: editData?.rating,
-            //     genre: genres.find(g => g.id === editData.genreId)?.name || bookData!.genre,
-            //     languageName: languages.find(l => l.id === editData.languageId)?.name || bookData!.languageName,
-            //     // Keep existing imageFileName unless new image was uploaded
-            //     imageFileName: imageBase64 ?
-            //         `http://localhost:8080/images/${Date.now()}_updated.jpg` :
-            //         bookData!.imageFileName
-            // };
-
-            // setBookData(updatedBookData)
-            // setBookData(refreshedBookData)
             setIsEditing(false)
             setError(null)
             setImageBase64('') // Clear image data
@@ -295,9 +260,6 @@ export default function EditBookPage() {
                                                                     src={bookData.imageFileName}
                                                                     alt={bookData.title}
                                                                     className="w-full h-full object-cover rounded-lg"
-                                                                    onError={(e) => {
-                                                                        e.currentTarget.src = 'https://via.placeholder.com/200x300/gray/white?text=No+Image';
-                                                                    }}
                                                                 />
                                                             ) : (
                                                                 <>
@@ -310,12 +272,9 @@ export default function EditBookPage() {
                                                         </div>
                                                     ) : (
                                                         <img
-                                                            src={bookData?.imageFileName || 'https://via.placeholder.com/200x300/gray/white?text=No+Image'}
+                                                            src={bookData?.imageFileName || '/public/default_book_cover.png'}
                                                             alt={bookData?.title}
                                                             className="w-full h-full object-cover rounded-lg"
-                                                            onError={(e) => {
-                                                                e.currentTarget.src = 'https://via.placeholder.com/200x300/gray/white?text=No+Image';
-                                                            }}
                                                         />
                                                     )}
 

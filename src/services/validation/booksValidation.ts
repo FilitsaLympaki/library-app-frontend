@@ -25,22 +25,16 @@ export const booksValidationSchema = z.object({
     })
         .int("Publication year must be a whole number")
         .min(1000, "Publication year must be a 4-digit number")
-        .max(new Date().getFullYear() + 1, "Publication year cannot be in the future")
-        .optional(),
-
+        .max(new Date().getFullYear() + 1, "Publication year cannot be in the future"),
 
     pages: z.number({
-        required_error: "Pages is required",
         invalid_type_error: "Pages must be a number"
     })
         .int("Pages must be a whole number")
         .min(1, "Pages must be at least 1")
-        .max(10000, "Pages cannot exceed 10,000")
-        .optional(),
-
+        .max(10000, "Pages cannot exceed 10,000"),
 
     price: z.number({
-        required_error: "Price is required",
         invalid_type_error: "Price must be a number"
     })
         .min(0, "Price cannot be negative")
@@ -48,12 +42,12 @@ export const booksValidationSchema = z.object({
         .optional(),
 
     rating: z.number({
-        required_error: "Rating is required",
         invalid_type_error: "Rating must be a number"
     })
         .min(0, "Rating must be between 0 and 5")
         .max(5, "Rating must be between 0 and 5")
         .optional(),
+
 
     publisherName: z.string()
         .trim()
@@ -71,6 +65,7 @@ export const booksValidationSchema = z.object({
 });
 
 export type BookValues = z.infer<typeof booksValidationSchema>;
+//export type BookValues= {[K in keyof z.infer<typeof booksValidationSchema>]: z.infer<typeof booksValidationSchema>[K] | undefined};
 
 export type BookValidationErrors = {
     title?: string;
